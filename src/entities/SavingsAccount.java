@@ -1,0 +1,35 @@
+package entities;
+
+// final: a classe SavingsAccount não pode ser herdada
+// convém colocar o final em métodos sobrepostos, para evitar sobreposições múltiplas
+// o String é uma classe final
+public final class SavingsAccount extends Account{
+
+	private Double interestRate;
+	
+	public SavingsAccount() {
+		super();
+	}
+
+	public SavingsAccount(Integer number, String holder, Double balance, Double interestRate) {
+		super(number, holder, balance);
+		this.interestRate = interestRate;
+	}
+
+	public Double getInterestRate() {
+		return interestRate;
+	}
+
+	public void setInterestRate(Double interestRate) {
+		this.interestRate = interestRate;
+	}
+	
+	public void updateBalance() {
+		balance += balance * interestRate;
+	}
+	
+	@Override
+	public void withdraw(double amount) {
+		balance -= amount;
+	}
+}
